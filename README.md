@@ -1,18 +1,19 @@
-Build
------
+*** Generate huffman encoded symbols from an alphabet and its frequencies 
+
+### Build
+```
 coffee -c Huffman.coffee
 coffee -c test.coffee
+```
 
-Test
-----
+### Test
 node test
 
-Use
----
+### Usage
 See test.coffee
 
 Initialize an array of dictionaries. Each item has a symbol and its frequency.
-
+```
 alphabet_plain = [
 	{s:'A', f:34},
 	{s:'B', f:12},
@@ -21,9 +22,13 @@ alphabet_plain = [
 	{s:'E', f:2},
 	{s:'F', f:5},
 	{s:'G', f:500}]
-
+```
 Declare the code to use
+```
 code=[0,1,2]
+```
 
-Encoded!
+Encode!
+```
 encoded = encoder.encode(code, alphabet_plain)
+```
