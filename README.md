@@ -12,6 +12,11 @@ node test
 ### Usage
 See test.coffee
 
+Import Huffman encoder
+```
+encoder = require "./Huffman"
+```
+
 Initialize an array of dictionaries. Each item has a symbol and its frequency.
 ```
 alphabet_plain = [
