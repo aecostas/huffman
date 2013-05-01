@@ -1,0 +1,22 @@
+{
+   "name":"huffman-encoder",
+   "description":"Huffman encoder. Any codification alphabet is allowed",
+   "version":"0.1.0",
+   "homepage":"https://github.com/aecostas/huffman",
+   "repository":"git://github.com/aecostas/huffman.git",
+   "author":"Andres Estevez <aecostas@gmail.com> (http://andresestevez.blogspot.com/)",
+   "main":"Huffman.coffee",
+
+   "dependencies":{
+      "coffee-script":"*",
+   },
+   "engines":{
+      "node":">= 0.4.0"
+   },
+   "licenses":[
+      {
+         "type":"MIT",
+         "url":"https://raw.github.com/aecostas/huffman/master/LICENSE"
+      }
+   ]
+}
