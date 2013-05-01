@@ -1,4 +1,4 @@
-*** Generate huffman encoded symbols from an alphabet and its frequencies 
+**Generate huffman encoded symbols from an alphabet and its frequencies**
 
 ### Build
 ```
