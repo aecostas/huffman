@@ -1,0 +1,12 @@
+Build
+-----
+coffee -c Huffman.coffee
+coffee -c test.coffee
+
+Test
+----
+node test
+
+Use
+---
+See test.coffee
