@@ -1,0 +1,47 @@
+require "./index"
+require "Huffman"
+
+# alphabet=[
+# 	{s:'A', p:0.2 },
+# 	{s:'B', p:0.2 },
+# 	{s:'C', p:0.15 },
+# 	{s:'D', p:0.15 },
+# 	{s:'E', p:0.1 },
+# 	{s:'F', p:0.1 },
+# 	{s:'G', p:0.1 }]
+
+# alphabet2=[
+# 	{s:'A', p:0.3 },
+# 	{s:'B', p:0.2 },
+# 	{s:'C', p:0.15 },
+# 	{s:'D', p:0.15 },
+# 	{s:'E', p:0.1 },
+# 	{s:'F', p:0.1 }]
+
+# q = alphabet.length
+# q2 = alphabet2.length
+
+
+# groupsize = 2 + ( (q-2) % (D-1) )
+# huffman(groupsize,D, alphabet)
+
+# console.log encoded
+
+# groupsize = 2 + ( (q2-2) % (D-1) )
+# huffman(groupsize,D, alphabet2)
+
+
+alphabet_plain = [
+	{s:'A', f:34},
+	{s:'B', f:12},
+	{s:'C', f:100},
+	{s:'D', f:45},
+	{s:'E', f:2},
+	{s:'F', f:5},
+	{s:'G', f:500}]
+
+
+code=[0,1,2]
+Huffman.encode(code, alphabet_plain)
+console.log encoded
+
