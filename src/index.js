@@ -1,30 +1,18 @@
 export default class Huffman {
   constructor() {
     this.encoded = {};
-  }
-
-  Compare(a, b) {
-    if (a.p > b.p) {
-      return -1;
-    };
-    if (a.p <= b.p) {
-      return 1;
-    };
-    return 0;
-  }
+  };
 
   huffman(groupsize, D, pAlphabet, code) {
     let alphabetNext;
-    let sorted = pAlphabet.sort(Huffman.compare);
+    let sorted = pAlphabet;
 
     for (let i = 0; i < groupsize; i++) {
-      console.warn(sorted + ':   ' + sorted.length + '   ' + groupsize);
       let character = sorted[sorted.length - (groupsize - i)];
 
       for (let letter of character.s) {
         this.encoded[letter] = code[i] + (this.encoded[letter] || '');
       }
-
     }
 
     // end of recursion
@@ -42,11 +30,30 @@ export default class Huffman {
       c.p = c.p + s.p;
     }
 
-    alphabetNext[alphabetNext.length] = c;
-
+    this._insertSorted(alphabetNext, c);
     this.huffman(D, D, alphabetNext, code);
-
   };
+
+  _insertSorted(alphabet, item) {
+    let index;
+
+    if (alphabet[0].p < item.p) {
+      index = 0;
+    } else if (alphabet[alphabet.length - 1].p > item.p) {
+      index = alphabet.length;
+    } else {
+      for (let i = 0; i < alphabet.length - 1 ; i++) {
+
+        if ((alphabet[i].p > item.p) && (alphabet[i + 1].p <= item.p)) {
+          index = i + 1;
+
+          break;
+        }
+      } // for
+    }
+
+    alphabet.splice(index, 0, item);
+  }
 
   _calculateProbabilities(frequencies) {
     let total = 0;
@@ -65,6 +72,16 @@ export default class Huffman {
     return alphabet;
   };
 
+  _compare(a, b) {
+    if (a.p > b.p) {
+      return -1;
+    };
+    if (a.p < b.p) {
+      return 1;
+    };
+    return 0;
+  };
+
   encode(code, frequencies) {
     let D = code.length;
 
@@ -78,12 +95,15 @@ export default class Huffman {
     */
     let alphabet;
 
+    this.encoded = {};
     alphabet = this._calculateProbabilities(frequencies);
 
     q = frequencies.length;
     let groupsize = 2 + ((q - 2) % (D - 1));
 
-    this.huffman(groupsize, D, alphabet, code);
+    let alphabetSorted = alphabet.sort(this._compare);
+
+    this.huffman(groupsize, D, alphabetSorted, code);
     return this.encoded;
   }
 
