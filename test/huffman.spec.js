@@ -1,8 +1,6 @@
 import chai from 'chai';
 import Huffman from '../lib/huffman.min.js';
 
-// const expect = chai.expect;
-
 let lib;
 let list;
 
@@ -76,7 +74,7 @@ describe('Huffman', function () {
   });
 
   describe('Encoding', function () {
-    it('should encode the frecuencies in ternary', () => {
+    it('should encode the alphabet in ternary - first groupsize != D', () => {
       let encoded;
       let alphabet;
       let code = [0, 1, 2];
@@ -98,7 +96,7 @@ describe('Huffman', function () {
       chai.expect(encoded['F']).to.deep.equal('21');
     });
 
-    it('should encode the frecuencies in ternary (II)', () => {
+    it('should encode the alphabet in ternary - first groupsize === D', () => {
       let encoded;
       let alphabet;
       let code = [0, 1, 2];
@@ -121,6 +119,25 @@ describe('Huffman', function () {
       chai.expect(encoded['F']).to.deep.equal('11');
       chai.expect(encoded['G']).to.deep.equal('12');
     });
+
+    it('should encode the alphabet in binary', () => {
+      let encoded;
+      let alphabet;
+      let code = [0, 1];
+
+      alphabet = [
+          {s: 'A', f: 7},
+          {s: 'B', f: 1},
+          {s: 'C', f: 1},
+          {s: 'D', f: 1}];
+
+      encoded = lib.encode(code, alphabet);
+      chai.expect(encoded['A']).to.deep.equal('0');
+      chai.expect(encoded['B']).to.deep.equal('11');
+      chai.expect(encoded['C']).to.deep.equal('100');
+      chai.expect(encoded['D']).to.deep.equal('101');
+    });
+
   });
 
 });
