@@ -34,7 +34,7 @@
     "encoder",
     "informationtheory"
   ],
-  "author": "Krasimir Tsonev",
+  "author": "Andres Estevez (aecostas@gmail.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/aecostas/huffman/issues"
