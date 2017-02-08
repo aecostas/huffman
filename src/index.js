@@ -3,6 +3,14 @@ export default class Huffman {
     this.encoded = {};
   };
 
+/**
+ * Implements huffman algorithm
+ *
+ * @param {Number} groupsize Number of elements to group in this iteration
+ * @param {Number} D Length of the code
+ * @param {Array.<Object>} alphabet
+ * @param {Array.<String>} code For instance [0,1,2]
+ */
   huffman(groupsize, D, pAlphabet, code) {
     let alphabetNext;
     let sorted = pAlphabet;
@@ -28,12 +36,19 @@ export default class Huffman {
     for (let s of sorted.slice(-groupsize)) {
       c.s = c.s + s.s;
       c.p = c.p + s.p;
-    }
+    };
 
     this._insertSorted(alphabetNext, c);
     this.huffman(D, D, alphabetNext, code);
   };
 
+  /**
+  * Insert item in alphabet according to the value of item.p
+  * @param {Array.<Object>} Sorted array of {s:<string>, p:<probability>}
+  * @param {Array.<Object>} {s:<string>, p:<probability>}
+  *
+  * @return {Array.<Object>} [{s:<string>, p:<probability>}]
+  */
   _insertSorted(alphabet, item) {
     let index;
 
@@ -55,6 +70,15 @@ export default class Huffman {
     alphabet.splice(index, 0, item);
   }
 
+/**
+ * Translate an array containing the frequencies
+ * of the symbols in the alphabet to a new array
+ * with the probabilities of each one
+ *
+ * @param {Array.<Object>} Array of {s: <string>, p: <counter> }
+ * @return {Array.<Object>} Array of { s: <string>, p: <probability> }
+ * @private
+ */
   _calculateProbabilities(frequencies) {
     let total = 0;
     let alphabet = {};
@@ -72,6 +96,15 @@ export default class Huffman {
     return alphabet;
   };
 
+/**
+ * Compares the field 'p' (probability)
+ * in the given objects
+ *
+ * @param {Object} a {p: <probability>,...}
+ * @param {Object} b {p: <probability>,...}
+ *
+ * @return {Number}
+ */
   _compare(a, b) {
     if (a.p > b.p) {
       return -1;
