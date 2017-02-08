@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/aecostas/investment-analyzer.svg?branch=master)](https://travis-ci.org/aecostas/investment-analyzer)
+[![Build Status](https://travis-ci.org/aecostas/huffman.svg?branch=master)](https://travis-ci.org/aecostas/huffman)
 
 *Generate huffman encoded symbols from an alphabet and its frequencies*
 
