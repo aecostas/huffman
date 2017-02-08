@@ -1,39 +1,35 @@
-**Generate huffman encoded symbols from an alphabet and its frequencies**
+*Generate huffman encoded symbols from an alphabet and its frequencies*
 
 ### Build
 ```
-coffee -c Huffman.coffee
-coffee -c test.coffee
+npm install
+npm run build
 ```
 
 ### Test
-node test
+```
+npm test
+```
 
 ### Usage
-See test.coffee
+Review test/huffman.spec.js for a complete test suite
 
-Import Huffman encoder
 ```
-encoder = require "./Huffman"
-```
+let encoded;
+let alphabet; // array of frequencies
+let code = [0, 1, 2];
 
-Initialize an array of dictionaries. Each item has a symbol and its frequency.
-```
-alphabet_plain = [
-	{s:'A', f:34},
-	{s:'B', f:12},
-	{s:'C', f:100},
-	{s:'D', f:45},
-	{s:'E', f:2},
-	{s:'F', f:5},
-	{s:'G', f:500}]
-```
-Declare the code to use
-```
-code=[0,1,2]
+alphabet = [
+		{s: 'A', f: 6},
+		{s: 'B', f: 4},
+		{s: 'C', f: 3},
+		{s: 'D', f: 3},
+		{s: 'E', f: 2},
+		{s: 'F', f: 2}];
+
+encoded = lib.encode(code, alphabet);
 ```
 
-Encode!
 ```
-encoded = encoder.encode(code, alphabet_plain)
+{ E: '20', F: '21', B: '00', C: '01', D: '02', A: '1' }
 ```
