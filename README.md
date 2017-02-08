@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/aecostas/investment-analyzer.svg?branch=master)](https://travis-ci.org/aecostas/investment-analyzer)
+
 *Generate huffman encoded symbols from an alphabet and its frequencies*
 
 ### Build
