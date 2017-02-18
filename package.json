@@ -1,6 +1,6 @@
 {
   "name": "huffman-encoder",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Huffman encoder",
   "main": "lib/huffman.js",
   "scripts": {
