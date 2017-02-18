@@ -51,7 +51,27 @@ function calculateProbabilities(frequencies) {
   return alphabet;
 };
 
+/**
+ * Compares the field 'p' (probability)
+ * in the given objects
+ *
+ * @param {Object} a {p: <probability>,...}
+ * @param {Object} b {p: <probability>,...}
+ *
+ * @return {Number}
+ */
+function compare(a, b) {
+  if (a.p > b.p) {
+    return -1;
+  };
+  if (a.p < b.p) {
+    return 1;
+  };
+  return 0;
+};
+
 module.exports = {
   insertSorted: insertSorted,
-  calculateProbabilities: calculateProbabilities
+  calculateProbabilities: calculateProbabilities,
+  compare: compare
 };

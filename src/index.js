@@ -44,25 +44,6 @@ export default class Huffman {
     this.huffman(D, D, alphabetNext, code);
   };
 
-/**
- * Compares the field 'p' (probability)
- * in the given objects
- *
- * @param {Object} a {p: <probability>,...}
- * @param {Object} b {p: <probability>,...}
- *
- * @return {Number}
- */
-  _compare(a, b) {
-    if (a.p > b.p) {
-      return -1;
-    };
-    if (a.p < b.p) {
-      return 1;
-    };
-    return 0;
-  };
-
   encode(code, frequencies) {
     let D = code.length;
 
@@ -82,7 +63,7 @@ export default class Huffman {
     q = frequencies.length;
     let groupsize = 2 + ((q - 2) % (D - 1));
 
-    let alphabetSorted = alphabet.sort(this._compare);
+    let alphabetSorted = alphabet.sort(utils.compare);
 
     this.huffman(groupsize, D, alphabetSorted, code);
     return this.encoded;
