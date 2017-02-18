@@ -5,25 +5,15 @@ let lib;
 
 describe('Huffman', function () {
   before(function () {
-    lib = new Huffman();
-
   });
 
   describe('Encoding', function () {
     it('should encode the alphabet in ternary - first groupsize != D', () => {
       let encoded;
-      let alphabet;
-      let code = [0, 1, 2];
 
-      alphabet = [
-          {s: 'A', f: 6},
-          {s: 'B', f: 4},
-          {s: 'C', f: 3},
-          {s: 'D', f: 3},
-          {s: 'E', f: 2},
-          {s: 'F', f: 2}];
+      lib = new Huffman(3, 'AAAAAABBBBCCCDDDEEFF');
+      encoded = lib.targetAlphabet;
 
-      encoded = lib.encode(code, alphabet);
       chai.expect(encoded['A']).to.deep.equal('1');
       chai.expect(encoded['B']).to.deep.equal('00');
       chai.expect(encoded['C']).to.deep.equal('01');
@@ -34,19 +24,10 @@ describe('Huffman', function () {
 
     it('should encode the alphabet in ternary - first groupsize === D', () => {
       let encoded;
-      let alphabet;
-      let code = [0, 1, 2];
 
-      alphabet = [
-          {s: 'A', f: 4},
-          {s: 'B', f: 4},
-          {s: 'C', f: 3},
-          {s: 'D', f: 3},
-          {s: 'E', f: 2},
-          {s: 'F', f: 2},
-          {s: 'G', f: 2}];
+      lib = new Huffman(3, 'AAAAAABBBBCCCDDDEEFFGG');
+      encoded = lib.targetAlphabet;
 
-      encoded = lib.encode(code, alphabet);
       chai.expect(encoded['A']).to.deep.equal('2');
       chai.expect(encoded['B']).to.deep.equal('00');
       chai.expect(encoded['C']).to.deep.equal('01');
@@ -58,16 +39,10 @@ describe('Huffman', function () {
 
     it('should encode the alphabet in binary', () => {
       let encoded;
-      let alphabet;
-      let code = [0, 1];
 
-      alphabet = [
-          {s: 'A', f: 7},
-          {s: 'B', f: 1},
-          {s: 'C', f: 1},
-          {s: 'D', f: 1}];
+      lib = new Huffman(2, 'AAAAAAABCD');
+      encoded = lib.targetAlphabet;
 
-      encoded = lib.encode(code, alphabet);
       chai.expect(encoded['A']).to.deep.equal('0');
       chai.expect(encoded['B']).to.deep.equal('11');
       chai.expect(encoded['C']).to.deep.equal('100');

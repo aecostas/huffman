@@ -1,9 +1,38 @@
 var utils = require('./utils.js');
+var StringStats = require('stringstats');
 
 export default class Huffman {
-  constructor(code) {
-    this._encoded = {};
+  constructor(codeLength, corpus) {
+    this.codeLength = codeLength;
+
+    if (!Number.isInteger(codeLength)) {
+      throw new Error();
+    }
+    // code = range(codeLength)
+    this._code = Array.apply(null, Array(codeLength));
+    this._code = this._code.map((x, i) => i);
+
+    this._setCorpus(corpus);
   };
+
+  get alphabet() {
+    return this._alphabet;
+  }
+
+  get code() {
+    return this._code;
+  }
+
+  get targetAlphabet() {
+    return this._targetAlphabet;
+  }
+
+  _setCorpus(str) {
+    let stats = new StringStats(str).stats;
+
+    this._alphabet = Object.keys(stats).map((k) => ({s: k, p: stats[k].probability}));
+    this._targetAlphabet = this.encode(this._code, this._alphabet);
+  }
 
 /**
  * Implements huffman algorithm
@@ -44,7 +73,7 @@ export default class Huffman {
     this.huffman(D, D, alphabetNext, code);
   };
 
-  encode(code, frequencies) {
+  encode(code, alphabet) {
     let D = code.length;
 
     /**
@@ -52,17 +81,10 @@ export default class Huffman {
     */
     let q;
 
-    /**
-    * @member {Object}
-    */
-    let alphabet;
-
     this.encoded = {};
-    alphabet = utils.calculateProbabilities(frequencies);
 
-    q = frequencies.length;
+    q = alphabet.length;
     let groupsize = 2 + ((q - 2) % (D - 1));
-
     let alphabetSorted = alphabet.sort(utils.compare);
 
     this.huffman(groupsize, D, alphabetSorted, code);

@@ -27,31 +27,6 @@ function insertSorted(alphabet, item) {
 };
 
 /**
- * Translate an array containing the frequencies
- * of the symbols in the alphabet to a new array
- * with the probabilities of each one
- *
- * @param {Array.<Object>} Array of {s: <string>, p: <counter> }
- * @return {Array.<Object>} Array of { s: <string>, p: <probability> }
- * @private
- */
-function calculateProbabilities(frequencies) {
-  let total = 0;
-  let alphabet = {};
-
-  frequencies.map((item) => total += item.f);
-  alphabet = frequencies.map(function (item) {
-    let n = {};
-
-    n.s = item.s;
-    n.p = (item.f) / total;
-    return n;
-  });
-
-  return alphabet;
-};
-
-/**
  * Compares the field 'p' (probability)
  * in the given objects
  *
@@ -72,6 +47,5 @@ function compare(a, b) {
 
 module.exports = {
   insertSorted: insertSorted,
-  calculateProbabilities: calculateProbabilities,
   compare: compare
 };

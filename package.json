@@ -22,7 +22,7 @@
     "mocha": "2.3.4",
     "webpack": "1.12.9",
     "yargs": "3.32.0",
-    "stringstats": "0.1.0"
+    "stringstats": "0.1.1"
   },
   "repository": {
     "type": "git",
