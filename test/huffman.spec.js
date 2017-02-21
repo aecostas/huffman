@@ -7,6 +7,27 @@ describe('Huffman', function () {
   before(function () {
   });
 
+  describe('Codes', function () {
+    it('binary', () => {
+      let huffman2 = new Huffman(2, 'AAABB');
+
+      chai.expect(huffman2.code).to.have.members([0, 1]);
+    });
+
+    it('ternary', () => {
+      let huffman2 = new Huffman(3, 'AAABB');
+
+      chai.expect(huffman2.code).to.have.members([0, 1, 2]);
+    });
+
+    it('cuaternary', () => {
+      let huffman2 = new Huffman(4, 'AAABB');
+
+      chai.expect(huffman2.code).to.have.members([0, 1, 2, 3]);
+    });
+
+  });
+
   describe('Encoding', function () {
     it('should encode the alphabet in ternary - first groupsize != D', () => {
       let encoded;
