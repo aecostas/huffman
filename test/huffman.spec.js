@@ -33,7 +33,7 @@ describe('Huffman', function () {
       let encoded;
 
       lib = new Huffman(3, 'AAAAAABBBBCCCDDDEEFF');
-      encoded = lib.targetAlphabet;
+      encoded = lib.encodingAlphabet;
 
       chai.expect(encoded['A']).to.deep.equal('1');
       chai.expect(encoded['B']).to.deep.equal('00');
@@ -47,7 +47,7 @@ describe('Huffman', function () {
       let encoded;
 
       lib = new Huffman(3, 'AAAAAABBBBCCCDDDEEFFGG');
-      encoded = lib.targetAlphabet;
+      encoded = lib.encodingAlphabet;
 
       chai.expect(encoded['A']).to.deep.equal('2');
       chai.expect(encoded['B']).to.deep.equal('00');
@@ -62,7 +62,7 @@ describe('Huffman', function () {
       let encoded;
 
       lib = new Huffman(2, 'AAAAAAABCD');
-      encoded = lib.targetAlphabet;
+      encoded = lib.encodingAlphabet;
 
       chai.expect(encoded['A']).to.deep.equal('0');
       chai.expect(encoded['B']).to.deep.equal('11');

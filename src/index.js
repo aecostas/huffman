@@ -23,7 +23,7 @@ export default class Huffman {
     return this._code;
   }
 
-  get targetAlphabet() {
+  get encodingAlphabet() {
     return this._targetAlphabet;
   }
 
